@@ -1,0 +1,1101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free 3-Day "Pre-Sold Cohort" Challenge</title>
+<!--
+  LP1 · Free 3-Day "Pre-Sold Cohort" Challenge (opt-in page) · Host: Daniel Reyes
+  Single-file build. Everything is scoped under #psc so it can be pasted into a
+  GHL Custom Code element without fighting the builder's global styles.
+  Photos live in ./images (upload to GHL media and swap the src paths).
+  Edit dates / redirect in the CONFIG block at the bottom of the file.
+  A/B headlines: add ?h=b or ?h=c to the URL.
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@600;700&family=Rubik:ital,wght@0,500;0,600;0,700;0,800;1,700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+#psc{
+  --night:#04201c;--night2:#0a3a30;--ink:#0b342e;--lime:#c6ff3c;--lime2:#a4e21d;
+  --red:#e3193f;--red2:#ad0c2b;--body:#283633;--mute:#6d7c78;--line:#e2e8e5;
+  --bg:#f2f5f4;--sk:#dde4e1;--marker:#1d4fd6;
+  font-family:'Source Sans 3',system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.6;
+  color:var(--body);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+#psc *,#psc *::before,#psc *::after{box-sizing:border-box;margin:0;padding:0}
+#psc img{display:block;max-width:100%}
+#psc button{font:inherit}
+#psc .dots{background-color:var(--bg);background-image:radial-gradient(#cfd8d4 1px,transparent 1.3px);background-size:15px 15px}
+
+/* ---------- type ---------- */
+#psc .bebas{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;letter-spacing:.012em}
+#psc .lime{color:var(--lime)}
+#psc .red{color:var(--red)}
+#psc .h-band{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;color:var(--lime);font-size:clamp(40px,6vw,68px);line-height:.95;letter-spacing:.01em;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+#psc .h-band-sub{font-family:'Rubik',sans-serif;font-weight:700;color:#fff;font-size:clamp(17px,2.2vw,23px);letter-spacing:.03em;margin-top:10px}
+#psc .h-ink{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;color:var(--ink);font-size:clamp(36px,4.8vw,56px);line-height:.98;letter-spacing:.01em}
+#psc .kick{font-family:'Rubik',sans-serif;font-weight:700;color:var(--red);font-size:clamp(19px,2.3vw,25px);line-height:1.25}
+#psc .hand{font-family:'Caveat',cursive;font-weight:700}
+#psc p+p{margin-top:14px}
+#psc strong{color:#132622}
+
+/* ---------- layout ---------- */
+#psc .sec{position:relative;padding:0 16px 90px}
+#psc .card{position:relative;max-width:900px;margin:0 auto;background:#fff;border-radius:12px;padding:clamp(26px,5vw,58px);
+  box-shadow:0 40px 70px -40px rgba(4,32,28,.45),0 2px 6px rgba(4,32,28,.06)}
+#psc .lift{margin-top:-120px;z-index:2}
+#psc .narrow{max-width:700px;margin-left:auto;margin-right:auto}
+#psc .center{text-align:center}
+
+/* dark bands with the slow sunburst */
+#psc .band{position:relative;overflow:hidden;color:#fff;text-align:center;padding:70px 20px 160px;
+  background:radial-gradient(120% 160% at 50% -10%,#0f4a3b 0%,#062b25 55%,var(--night) 100%)}
+#psc .band>*{position:relative;z-index:1}
+#psc .band::before,#psc .hero::before{content:"";position:absolute;left:50%;top:60%;width:3000px;height:3000px;margin:-1500px 0 0 -1500px;z-index:0;pointer-events:none;
+  background:repeating-conic-gradient(from 0deg,rgba(198,255,60,.055) 0deg 3.5deg,transparent 3.5deg 11deg);
+  -webkit-mask:radial-gradient(circle,#000 8%,transparent 42%);mask:radial-gradient(circle,#000 8%,transparent 42%);
+  animation:psc-spin 220s linear infinite}
+#psc .band-get{padding-bottom:280px}
+#psc .band::after{content:"";position:absolute;inset:auto 0 0 0;height:60px;background:linear-gradient(transparent,rgba(0,0,0,.18));pointer-events:none}
+@keyframes psc-spin{to{transform:rotate(360deg)}}
+
+/* ---------- buttons ---------- */
+#psc .cta{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:12px;cursor:pointer;border:0;border-radius:7px;
+  background:linear-gradient(#f0294f,var(--red));color:#fff;text-decoration:none;font:700 clamp(19px,2.3vw,25px)/1.1 'Rubik',sans-serif;padding:22px 44px;
+  box-shadow:0 6px 0 var(--red2),0 18px 30px -10px rgba(227,25,63,.65);transition:transform .15s,box-shadow .15s}
+#psc .cta:hover{transform:translateY(3px);box-shadow:0 3px 0 var(--red2),0 12px 24px -10px rgba(227,25,63,.65)}
+#psc .cta svg{width:1.15em;height:1.15em;flex:none}
+#psc .cta::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:28%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:psc-shine 4.5s ease-in-out infinite}
+@keyframes psc-shine{0%,62%{left:-40%}88%,100%{left:130%}}
+#psc .cta-sub{font-size:15px;color:var(--mute);margin-top:16px;font-weight:600}
+#psc .cta-box{max-width:760px;margin:44px auto 0;padding:34px 24px 30px;border:2px dashed #0b342e;border-radius:10px;text-align:center;background:repeating-linear-gradient(135deg,#fff 0 14px,#f7f9f8 14px 28px)}
+
+/* ---------- top bar + hero ---------- */
+#psc .topbar{background:var(--red);color:#fff;text-align:center;font:700 13px/1.3 'Rubik',sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:9px 14px}
+#psc .topbar span{opacity:.85;font-weight:500;text-transform:none;letter-spacing:.02em}
+#psc .hero{position:relative;overflow:hidden;color:#fff;text-align:center;padding:34px 18px 190px;
+  background:radial-gradient(90% 60% at 50% 22%,#125743 0%,#083a30 42%,var(--night) 100%)}
+#psc .hero::before{top:44%}
+#psc .hero>*{position:relative;z-index:1}
+
+#psc .plate{display:inline-flex;align-items:center;gap:10px;padding:9px 20px 8px 14px;border-radius:9px;position:relative;
+  background:linear-gradient(#fafbfb,#d9dde0 45%,#bfc5c9 52%,#e8ebed);border:2px solid #7f878c;
+  box-shadow:inset 0 1px 0 #fff,inset 0 -2px 0 rgba(0,0,0,.18),0 6px 16px rgba(0,0,0,.4)}
+#psc .plate::before,#psc .plate::after{content:"";position:absolute;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#7a8287)}
+#psc .plate::before{left:5px}#psc .plate::after{right:5px}
+#psc .plate svg{width:30px;height:30px;flex:none;filter:drop-shadow(0 1px 0 rgba(0,0,0,.3))}
+#psc .plate b{display:block;font:400 24px/.9 'Bebas Neue',Impact,sans-serif;color:#13201d;letter-spacing:.02em;text-align:left}
+#psc .plate small{display:block;font:700 10px/1.2 'Rubik',sans-serif;color:var(--red);letter-spacing:.14em;text-transform:uppercase;text-align:left}
+
+#psc .pre{font:600 clamp(18px,2.4vw,25px)/1.35 'Rubik',sans-serif;margin:30px auto 0;max-width:820px;color:#e9f3ef}
+#psc .circ{position:relative;white-space:nowrap;color:#fff;padding:0 6px}
+#psc .circ svg{position:absolute;left:-10px;top:-12px;width:calc(100% + 20px);height:calc(100% + 22px);overflow:visible;pointer-events:none}
+#psc .circ path{fill:none;stroke:var(--lime);stroke-width:3.2;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0;animation:psc-draw 1.1s .5s cubic-bezier(.6,.1,.3,1) both}
+@keyframes psc-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+#psc .hero h1{font-family:'Bebas Neue',Impact,sans-serif;font-weight:400;font-size:clamp(42px,6.6vw,82px);line-height:.94;letter-spacing:.008em;max-width:1000px;margin:18px auto 0;
+  text-shadow:0 4px 0 rgba(0,0,0,.28),0 0 40px rgba(0,0,0,.35)}
+#psc .hero h1 .lime{display:inline;text-shadow:0 4px 0 rgba(0,0,0,.28),0 0 30px rgba(198,255,60,.25)}
+#psc .hero-sub{font-size:clamp(18px,2.1vw,22px);line-height:1.45;max-width:740px;margin:22px auto 0;color:#d6e6e0}
+#psc .hero-sub strong{color:#fff}
+
+/* hero "live class" frame */
+#psc .live{container-type:inline-size;position:relative;max-width:820px;margin:38px auto 0;border-radius:12px;background:#0d1412;padding:0;text-align:left;
+  box-shadow:0 0 0 1px rgba(255,255,255,.08),0 0 0 8px rgba(198,255,60,.09),0 40px 80px -20px rgba(0,0,0,.7)}
+#psc .live-top{display:flex;align-items:center;gap:2cqw;padding:1.4cqw 2cqw;font:700 1.6cqw/1 'Rubik',sans-serif;color:#cfd8d5;border-bottom:1px solid rgba(255,255,255,.07)}
+#psc .rec{display:inline-flex;align-items:center;gap:.8cqw;background:var(--red);color:#fff;padding:.7cqw 1.2cqw;border-radius:.6cqw;letter-spacing:.08em}
+#psc .rec i{width:1cqw;height:1cqw;border-radius:50%;background:#fff;animation:psc-blink 1.4s infinite}
+@keyframes psc-blink{50%{opacity:.25}}
+#psc .live-top .grow{flex:1}
+#psc .live-top .wdots{display:flex;gap:.7cqw}#psc .live-top .wdots i{width:1.1cqw;height:1.1cqw;border-radius:50%;background:#2c3734}
+#psc .live-body{display:grid;grid-template-columns:1.05fr 1fr;gap:1.2cqw;padding:1.2cqw}
+#psc .spk{position:relative;border-radius:1cqw;overflow:hidden;aspect-ratio:4/4.1;background:#24302c;box-shadow:0 0 0 .35cqw var(--lime)}
+#psc .spk img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+#psc .spk figcaption{position:absolute;left:1.4cqw;bottom:1.4cqw;display:flex;align-items:center;gap:.8cqw;background:rgba(0,0,0,.62);color:#fff;font:600 1.7cqw/1 'Rubik',sans-serif;padding:.9cqw 1.3cqw;border-radius:.7cqw}
+#psc .spk figcaption .bars{display:flex;gap:.3cqw;align-items:flex-end;height:1.7cqw}
+#psc .spk figcaption .bars i{width:.4cqw;background:var(--lime);border-radius:1px;animation:psc-eq 1s ease-in-out infinite}
+#psc .spk figcaption .bars i:nth-child(2){animation-delay:.2s}#psc .spk figcaption .bars i:nth-child(3){animation-delay:.45s}
+@keyframes psc-eq{0%,100%{height:30%}50%{height:100%}}
+#psc .wb{position:relative;border-radius:1cqw;background:linear-gradient(160deg,#fff,#eef1f0);box-shadow:inset 0 0 0 .5cqw #d4d9d7,inset 0 -1.2cqw 0 #c5cbc9;overflow:hidden}
+#psc .wb svg{position:absolute;inset:0;width:100%;height:100%}
+#psc .wb .ln{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;animation:psc-draw .9s cubic-bezier(.6,.1,.3,1) both}
+#psc .wb text{font-family:'Caveat',cursive;font-weight:700;animation:psc-ink .5s both}
+@keyframes psc-ink{from{opacity:0}to{opacity:1}}
+#psc .wb .tick{animation:psc-tick 6s infinite both}
+@keyframes psc-tick{0%,8%{stroke-dashoffset:1}16%,88%{stroke-dashoffset:0}96%,100%{stroke-dashoffset:1}}
+#psc .live-strip{display:flex;gap:1cqw;padding:0 1.2cqw 1.2cqw}
+#psc .live-strip img{flex:1;min-width:0;aspect-ratio:1/.78;object-fit:cover;border-radius:.8cqw}
+#psc .live-strip img:nth-child(3){box-shadow:0 0 0 .3cqw #34d27b}
+#psc .note{position:absolute;font-family:'Caveat',cursive;font-weight:700;color:#14201d;background:#fff36b;padding:1.2cqw 1.8cqw 1.4cqw;font-size:2.8cqw;line-height:1;transform:rotate(-6deg);box-shadow:0 1.2cqw 2cqw -1cqw rgba(0,0,0,.5)}
+#psc .note::before{content:"";position:absolute;left:50%;top:-1.3cqw;width:9cqw;height:2.4cqw;margin-left:-4.5cqw;background:rgba(255,255,255,.55);transform:rotate(3deg)}
+#psc .live .note{right:-2.5cqw;top:-3.5cqw}
+
+#psc .objection{font:italic 600 clamp(17px,2vw,20px)/1.4 'Source Sans 3',sans-serif;color:#fff;margin:30px auto 0;max-width:640px}
+#psc .cta-row{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:28px}
+#psc .cd{display:flex;gap:8px}
+#psc .cd>div{min-width:62px;padding:9px 6px 7px;border-radius:8px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);text-align:center}
+#psc .cd b{display:block;font:400 34px/1 'Bebas Neue',Impact,sans-serif;color:var(--lime);font-variant-numeric:tabular-nums}
+#psc .cd span{display:block;font:600 10px/1.2 'Rubik',sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#a9bdb6;margin-top:3px}
+#psc .hero .cta-sub{color:#b8cbc4}
+#psc .cred{display:inline-flex;align-items:center;gap:10px;margin-top:18px;font:600 15px/1.3 'Rubik',sans-serif;color:#e3eeea;flex-wrap:wrap;justify-content:center}
+#psc .stars{color:#ffc93a;letter-spacing:2px;font-size:18px}
+
+/* hero white card */
+#psc .hero-card{display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:end;padding-bottom:0;overflow:hidden}
+#psc .hc-img{position:relative;align-self:stretch;min-height:440px}
+#psc .hc-img::before{content:"";position:absolute;left:-10px;width:290px;top:34px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,#d9ff86,var(--lime2) 60%,#6fa70c)}
+#psc .hc-img::after{content:"";position:absolute;inset:0 -20px 0 -20px;background-image:radial-gradient(#0b342e 1.3px,transparent 1.6px);background-size:12px 12px;opacity:.12;-webkit-mask:linear-gradient(transparent,#000 40%,transparent);mask:linear-gradient(transparent,#000 40%,transparent)}
+#psc .hc-img img{position:absolute;left:-90px;bottom:0;width:370px;max-width:none;z-index:1;
+  -webkit-mask-image:linear-gradient(90deg,#000 78%,transparent 99%);mask-image:linear-gradient(90deg,#000 78%,transparent 99%)}
+#psc .hc-copy{padding-bottom:50px}
+#psc .hc-copy .h-ink{font-size:clamp(32px,4vw,46px)}
+#psc .ticks{list-style:none;margin-top:22px}
+#psc .ticks li{position:relative;padding-left:36px;margin-top:14px;font-size:18px;line-height:1.45}
+#psc .ticks li::before{content:"";position:absolute;left:0;top:2px;width:22px;height:22px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Crect x='1.5' y='1.5' width='17' height='17' rx='3' fill='%23fff' stroke='%23e3193f' stroke-width='2'/%3E%3Cpath d='M5.5 10.5l3 3 6-7' fill='none' stroke='%23e3193f' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+#psc .ticks li strong{color:#0f2420}
+#psc .stats{display:grid;grid-template-columns:repeat(3,1fr);max-width:900px;margin:0 auto;background:var(--ink);border-radius:0 0 12px 12px;color:#fff;position:relative;z-index:1;
+  box-shadow:0 30px 50px -30px rgba(4,32,28,.6)}
+#psc .stats>div{padding:22px 16px 20px;text-align:center;position:relative}
+#psc .stats>div+div::before{content:"";position:absolute;left:0;top:22%;bottom:22%;width:2px;background:repeating-linear-gradient(transparent 0 4px,rgba(198,255,60,.5) 4px 8px)}
+#psc .stats b{display:block;font:400 clamp(34px,4.4vw,48px)/1 'Bebas Neue',Impact,sans-serif;color:var(--lime);letter-spacing:.01em}
+#psc .stats span{display:block;font:600 14px/1.3 'Rubik',sans-serif;color:#cfe0da;margin-top:4px}
+#psc .hero-wrap .card{border-radius:12px 12px 0 0}
+
+/* ---------- section 2: checklist ---------- */
+#psc .fit{display:grid;grid-template-columns:1.25fr .9fr;gap:40px;align-items:center}
+#psc .checklist{background:#fff;border-radius:12px;padding:30px 30px 26px;box-shadow:0 22px 40px -22px rgba(4,32,28,.35),0 0 0 1px var(--line);
+  background-image:linear-gradient(#fff,#fff),repeating-linear-gradient(135deg,#f1f4f3 0 10px,#fff 10px 20px)}
+#psc .checklist label{display:flex;gap:14px;align-items:flex-start;cursor:pointer;padding:11px 0;border-bottom:1px dashed var(--line);font-size:18px;line-height:1.45}
+#psc .checklist label:last-child{border-bottom:0}
+#psc .checklist input{position:absolute;opacity:0;pointer-events:none}
+#psc .cbox{flex:none;width:26px;height:26px;margin-top:1px;border:2.2px solid var(--red);border-radius:5px;background:#fff;display:grid;place-items:center;transition:background .2s}
+#psc .cbox svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .35s .05s}
+#psc .checklist input:checked+.cbox{background:var(--red)}
+#psc .checklist input:checked+.cbox svg{stroke-dashoffset:0}
+#psc .checklist input:focus-visible+.cbox{outline:3px solid var(--lime2);outline-offset:2px}
+#psc .checklist b{color:#0f2420}
+
+#psc .nobuy{container-type:inline-size;position:relative;max-width:330px;margin:0 auto;width:100%}
+#psc .post{background:#fff;border-radius:3.5cqw;box-shadow:0 4cqw 8cqw -4cqw rgba(4,32,28,.45),0 0 0 1px var(--line);padding:4cqw;font-size:4cqw}
+#psc .post-h{display:flex;align-items:center;gap:3cqw;margin-bottom:3cqw}
+#psc .post-h img{width:11cqw;height:11cqw;border-radius:50%;object-fit:cover}
+#psc .post-h b{display:block;font:700 4.3cqw/1.1 'Rubik',sans-serif;color:#14231f}
+#psc .post-h .sk{width:22cqw;margin:1.2cqw 0 0;height:2.4cqw}
+#psc .post-img{border-radius:2.5cqw;width:100%;aspect-ratio:4/3;object-fit:cover;margin-top:3cqw}
+#psc .post-f{display:flex;align-items:center;gap:4cqw;margin-top:3.5cqw;font:600 4cqw/1 'Rubik',sans-serif;color:#57625f}
+#psc .post-f span{display:inline-flex;align-items:center;gap:1.4cqw}
+#psc .post-f svg{width:5.5cqw;height:5.5cqw}
+#psc .heart{color:var(--red)}
+#psc .heart svg{animation:psc-beat 2.2s ease-in-out infinite}
+@keyframes psc-beat{0%,40%,100%{transform:scale(1)}20%{transform:scale(1.25)}}
+#psc .sale{position:absolute;right:-7cqw;bottom:-12cqw;width:50cqw;background:#fff;border-radius:4cqw;padding:4cqw 4.5cqw 3.5cqw;transform:rotate(-3deg);
+  box-shadow:0 6cqw 12cqw -5cqw rgba(4,32,28,.45),0 0 0 1px var(--line)}
+#psc .sale-top{display:flex;align-items:center;gap:2cqw}
+#psc .sale-top i{width:6cqw;height:6cqw;border-radius:50%;background:#fde8ec;display:grid;place-items:center}
+#psc .sale-top i::after{content:"";width:2.4cqw;height:2.4cqw;border-radius:50%;background:var(--red)}
+#psc .sale-top .sk{flex:1;height:2.4cqw;margin:0}
+#psc .sale b{display:block;font:400 14cqw/1 'Bebas Neue',Impact,sans-serif;color:var(--ink);letter-spacing:.02em;margin-top:2.5cqw}
+#psc .sale svg{display:block;width:100%;height:10cqw;margin-top:1.5cqw}
+#psc .notfor{margin-top:44px;padding:26px 30px;border-radius:12px;background:#f7f8f8;border:2px solid #eceff0;position:relative}
+#psc .notfor h3{font:700 22px/1.2 'Rubik',sans-serif;color:var(--ink)}
+#psc .notfor ul{list-style:none;margin-top:10px}
+#psc .notfor li{position:relative;padding-left:36px;margin-top:10px;font-size:18px}
+#psc .notfor li::before{content:"";position:absolute;left:0;top:2px;width:24px;height:24px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='11' fill='%23e3193f'/%3E%3Cpath d='M8 8l8 8M16 8l-8 8' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* ---------- section 3: mechanism ---------- */
+#psc .lead p{font-size:19px}
+#psc .order{position:relative;margin:34px 0 10px;display:grid;gap:18px}
+#psc .lane{position:relative;border-radius:12px;padding:20px 20px 18px}
+#psc .lane-bad{background:#fbf3f4;border:1.5px solid #f2d3d9}
+#psc .lane-good{background:#f3fbe4;border:1.5px solid #d8eeae}
+#psc .lane-tag{display:inline-block;font:700 13px/1 'Rubik',sans-serif;letter-spacing:.1em;text-transform:uppercase;padding:7px 10px;border-radius:5px;color:#fff;background:var(--red)}
+#psc .lane-good .lane-tag{background:var(--ink);color:var(--lime)}
+#psc .lane ol{list-style:none;display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin-top:14px}
+#psc .lane li{position:relative;display:flex;align-items:center;gap:9px;background:#fff;border-radius:8px;padding:10px 13px;font:600 15px/1.25 'Rubik',sans-serif;color:#34403d;box-shadow:0 1px 0 rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.05)}
+#psc .lane li svg{width:22px;height:22px;flex:none;color:var(--red)}
+#psc .lane-good li svg{color:#4f8d0a}
+#psc .lane li:not(:last-child)::after{content:"";position:absolute;right:-9px;top:50%;width:8px;height:2px;background:#c4cbc9}
+#psc .lane li.res{background:var(--red);color:#fff;font-weight:700}
+#psc .lane li.res svg{color:#fff}
+#psc .lane-good li.res{background:var(--ink);color:var(--lime)}
+#psc .lane-good li.res svg{color:var(--lime)}
+#psc .strike{position:absolute;left:12px;right:12px;top:52px;height:calc(100% - 60px);width:calc(100% - 24px);pointer-events:none;overflow:visible}
+#psc .strike path{fill:none;stroke:var(--red);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.85;stroke-dasharray:1;animation:psc-strike 7s ease-in-out infinite both}
+@keyframes psc-strike{0%,10%{stroke-dashoffset:1}28%,86%{stroke-dashoffset:0}96%,100%{stroke-dashoffset:1}}
+#psc .flipnote{position:absolute;right:-8px;top:calc(50% - 30px);z-index:2;display:flex;align-items:center;gap:6px;color:var(--ink);font-size:26px;transform:rotate(-4deg)}
+#psc .flipnote svg{width:54px;height:60px}
+#psc .flipnote path{fill:none;stroke:var(--ink);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+#psc .order-quote{text-align:center;margin:44px auto 6px}
+#psc .order-quote .h-ink{font-size:clamp(34px,4.6vw,54px)}
+#psc .uline{position:relative;color:var(--red);white-space:nowrap}
+#psc .uline svg{position:absolute;left:-2%;bottom:-.12em;width:104%;height:.32em;overflow:visible}
+#psc .uline path{fill:none;stroke:var(--red);stroke-width:4;stroke-linecap:round;stroke-dasharray:1;animation:psc-strike 7s 1s ease-in-out infinite both}
+
+#psc .pcs{display:grid;gap:34px;margin-top:30px}
+#psc .pc{position:relative;display:grid;grid-template-columns:1fr 42%;grid-template-rows:auto 1fr;border-radius:12px;background:#fff;box-shadow:0 22px 40px -24px rgba(4,32,28,.4),0 0 0 1px var(--line)}
+#psc .pc-head{grid-column:1/-1;grid-row:1;background:linear-gradient(120deg,#0c3d33,var(--night));border-radius:12px 12px 0 0;padding:20px 26px 18px;position:relative;overflow:hidden}
+#psc .pc-head::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(198,255,60,.05) 0 14px,transparent 14px 34px)}
+#psc .pc-k{position:relative;display:block;font:800 14px/1 'Rubik',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime)}
+#psc .pc-head h3{position:relative;font:400 clamp(34px,4.4vw,46px)/1 'Bebas Neue',Impact,sans-serif;color:#fff;margin-top:6px;letter-spacing:.01em}
+#psc .pc-body{grid-column:1;grid-row:2;padding:22px 26px 28px;font-size:19px}
+#psc .pc .pc-art{grid-column:2;grid-row:1/3;align-self:center;margin:-14px 22px 26px 0;z-index:2}
+#psc .pc-close{margin-top:40px;background:#eef2f1;border-left:6px solid var(--lime2);border-radius:8px;padding:24px 28px;font:600 clamp(19px,2.2vw,22px)/1.45 'Rubik',sans-serif;color:var(--ink)}
+
+/* mock social bits */
+#psc .sk{display:block;height:.62em;border-radius:3px;margin:.5em 0;
+  background:linear-gradient(90deg,var(--sk) 0 18%,transparent 0 21%,var(--sk) 0 44%,transparent 0 47%,var(--sk) 0 58%,transparent 0 61%,var(--sk) 0 86%,transparent 0 89%,var(--sk) 0)}
+#psc .sk.b{background:linear-gradient(90deg,var(--sk) 0 30%,transparent 0 33%,var(--sk) 0 41%,transparent 0 44%,var(--sk) 0 72%,transparent 0 75%,var(--sk) 0)}
+#psc .sk.c{background:linear-gradient(90deg,var(--sk) 0 12%,transparent 0 15%,var(--sk) 0 52%,transparent 0 55%,var(--sk) 0 66%,transparent 0 69%,var(--sk) 0)}
+#psc .mock{container-type:inline-size;position:relative}
+#psc .mock .post{transform:rotate(2deg)}
+#psc .replies{position:relative;height:30cqw;margin-top:-2cqw}
+#psc .rp{position:absolute;display:flex;align-items:center;gap:1.6cqw;background:#fff;border-radius:20cqw;padding:1.2cqw 3cqw 1.2cqw 1.2cqw;box-shadow:0 2cqw 4cqw -1.5cqw rgba(4,32,28,.4),0 0 0 1px var(--line);animation:psc-pop 6s infinite both}
+#psc .rp img{width:8.5cqw;height:8.5cqw;border-radius:50%;object-fit:cover}
+#psc .rp .sk{width:16cqw;height:2cqw;margin:0}
+#psc .rp:nth-child(1){left:2cqw;top:6cqw;animation-delay:0s}
+#psc .rp:nth-child(2){left:40cqw;top:2cqw;animation-delay:.5s}
+#psc .rp:nth-child(3){left:18cqw;top:16cqw;animation-delay:1s}
+#psc .rp:nth-child(4){left:58cqw;top:14cqw;animation-delay:1.5s}
+#psc .rp:nth-child(5){left:-4cqw;top:22cqw;animation-delay:2s}
+@keyframes psc-pop{0%{opacity:0;transform:translateY(3cqw) scale(.8)}6%,84%{opacity:1;transform:none}92%,100%{opacity:0;transform:translateY(-2cqw)}}
+#psc .chart-tape{position:absolute;right:-4cqw;bottom:-8cqw;width:56cqw;background:#fffef6;padding:3cqw 3cqw 2cqw;border-radius:1.5cqw;transform:rotate(-5deg);box-shadow:0 4cqw 8cqw -4cqw rgba(0,0,0,.5)}
+#psc .chart-tape::before{content:"";position:absolute;left:35%;top:-2.4cqw;width:22cqw;height:5cqw;background:rgba(230,226,190,.75);transform:rotate(-4deg)}
+#psc .chart-tape svg{width:100%;display:block}
+#psc .chart-tape .ln{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;animation:psc-strike 7s ease-in-out infinite both}
+#psc .seats{display:grid;grid-template-columns:repeat(5,1fr);gap:2.4cqw;margin-top:3cqw}
+#psc .seat{position:relative;aspect-ratio:1;border-radius:50%;border:2px dashed #b9c4c0;background:#f4f7f6}
+#psc .seat img{position:absolute;inset:-2px;width:calc(100% + 4px);height:calc(100% + 4px);border-radius:50%;object-fit:cover;box-shadow:0 0 0 .8cqw #fff,0 0 0 1.3cqw var(--lime2);animation:psc-seat 10s infinite both}
+@keyframes psc-seat{0%{opacity:0;transform:scale(.4)}4%,88%{opacity:1;transform:none}94%,100%{opacity:0;transform:scale(.6)}}
+#psc .seat-h{display:flex;justify-content:space-between;align-items:baseline;margin-top:2cqw}
+#psc .seat-h b{font:400 8cqw/1 'Bebas Neue',Impact,sans-serif;color:var(--ink);letter-spacing:.01em}
+#psc .seat-h span{font:700 3.6cqw/1 'Rubik',sans-serif;color:#fff;background:var(--red);padding:1.4cqw 2.2cqw;border-radius:1.2cqw;letter-spacing:.06em}
+
+/* ---------- section 4: 3 days ---------- */
+#psc .days{position:relative;margin-top:6px}
+#psc .rail{position:absolute;left:31px;top:40px;bottom:40px;width:4px;border-radius:2px;background:#e6ecea;overflow:hidden}
+#psc .rail i{position:absolute;inset:0;background:linear-gradient(var(--lime2),var(--ink));transform-origin:top;transform:scaleY(var(--p,1))}
+#psc .day{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center;padding:34px 0 34px 86px}
+#psc .day+.day{border-top:1px dashed var(--line)}
+#psc .badge{position:absolute;left:0;top:34px;width:66px;height:66px;border-radius:50%;display:grid;place-content:center;text-align:center;background:var(--ink);color:#fff;box-shadow:0 0 0 6px #fff,0 0 0 8px #dfe7e4}
+#psc .badge small{display:block;font:700 10px/1 'Rubik',sans-serif;letter-spacing:.14em;color:var(--lime)}
+#psc .badge b{display:block;font:400 34px/.9 'Bebas Neue',Impact,sans-serif}
+#psc .day h3{font:400 clamp(30px,3.6vw,40px)/1 'Bebas Neue',Impact,sans-serif;color:var(--ink);letter-spacing:.01em}
+#psc .day h3 span{display:block;font:700 14px/1 'Rubik',sans-serif;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+#psc .day p{margin-top:12px;font-size:18px}
+
+#psc .board{background:#fff;border-radius:3cqw;padding:4cqw;box-shadow:0 5cqw 9cqw -5cqw rgba(4,32,28,.5),0 0 0 1px var(--line);transform:rotate(-1.5deg);font-size:4cqw}
+#psc .board-row{display:flex;align-items:center;gap:3cqw;padding:2.6cqw 0;border-top:1px solid #edf1ef}
+#psc .board-row:first-of-type{border-top:0}
+#psc .board-row img{width:9cqw;height:9cqw;border-radius:50%;object-fit:cover;flex:none}
+#psc .board-row .t{flex:1;position:relative}
+#psc .board-row .sk{margin:.8cqw 0;height:2.3cqw}
+#psc .hl{position:absolute;left:-1.5cqw;right:-1cqw;top:-.6cqw;bottom:-.6cqw;background:linear-gradient(100deg,rgba(255,236,61,.0),rgba(255,236,61,.85) 6%,rgba(255,229,40,.75) 94%,rgba(255,236,61,0));border-radius:1cqw;mix-blend-mode:multiply;transform-origin:left;animation:psc-hl 7s infinite both}
+#psc .board-row:nth-of-type(3) .hl{animation-delay:.6s}
+#psc .board-row:nth-of-type(5) .hl{animation-delay:1.2s}
+@keyframes psc-hl{0%,8%{transform:scaleX(0)}18%,86%{transform:scaleX(1)}96%,100%{transform:scaleX(0)}}
+#psc .tag{position:absolute;right:-6cqw;top:-2cqw;width:28cqw;aspect-ratio:1;border-radius:50%;display:grid;place-content:center;text-align:center;background:var(--red);color:#fff;transform:rotate(12deg);
+  box-shadow:0 3cqw 6cqw -2cqw rgba(173,12,43,.7),inset 0 0 0 1.2cqw rgba(255,255,255,.18);animation:psc-wob 5s ease-in-out infinite}
+#psc .tag b{font:400 9.5cqw/1 'Bebas Neue',Impact,sans-serif;letter-spacing:.01em}
+@keyframes psc-wob{0%,100%{transform:rotate(12deg)}50%{transform:rotate(6deg) translateY(-1cqw)}}
+
+#psc .papers{position:relative;height:96cqw}
+#psc .sheet{position:absolute;width:76cqw;aspect-ratio:8.5/10.5;background:#fff;border-radius:1cqw;padding:12cqw 6cqw 6cqw 12cqw;
+  background-image:linear-gradient(90deg,transparent 9cqw,#f4b7c1 9cqw,#f4b7c1 9.4cqw,transparent 9.4cqw),repeating-linear-gradient(transparent 0 6.6cqw,#dbe6f3 6.6cqw 6.9cqw);
+  box-shadow:0 5cqw 9cqw -5cqw rgba(4,32,28,.45),0 0 0 1px rgba(0,0,0,.06)}
+#psc .sheet.s2{left:22cqw;top:0;transform:rotate(5deg)}
+#psc .sheet.s1{left:2cqw;top:10cqw;transform:rotate(-4deg)}
+#psc .sheet .tab{position:absolute;top:3.5cqw;left:12cqw;font:400 7cqw/1 'Bebas Neue',Impact,sans-serif;color:#fff;background:var(--ink);padding:1.4cqw 2.6cqw 1cqw;border-radius:1cqw;letter-spacing:.02em}
+#psc .sheet.s1 .tab{background:var(--red)}
+#psc .fl{display:flex;align-items:flex-end;gap:2cqw;height:6.9cqw}
+#psc .fl .sk{flex:none;height:1.9cqw;margin:0 0 1.6cqw}
+#psc .fl svg{flex:1;height:5cqw;overflow:visible;border-bottom:.35cqw solid #9aa6a2;margin-bottom:1.2cqw}
+#psc .fl path{fill:none;stroke:var(--marker);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;animation:psc-write 8s infinite both}
+#psc .fl:nth-child(3) path{animation-delay:.9s}#psc .fl:nth-child(5) path{animation-delay:1.8s}#psc .fl:nth-child(7) path{animation-delay:2.7s}
+@keyframes psc-write{0%,6%{stroke-dashoffset:1}20%,88%{stroke-dashoffset:0}96%,100%{stroke-dashoffset:1}}
+#psc .clip{position:absolute;left:52cqw;top:4cqw;width:9cqw;transform:rotate(8deg);z-index:2}
+#psc .pen{position:absolute;right:-2cqw;bottom:0;width:48cqw;transform:rotate(-28deg);z-index:3;filter:drop-shadow(0 2cqw 2cqw rgba(0,0,0,.3))}
+
+#psc .phone{position:relative;background:#121615;border-radius:15cqw;padding:4cqw;box-shadow:0 0 0 .6cqw #3a4441,0 8cqw 16cqw -6cqw rgba(4,32,28,.65)}
+#psc .phone::before{content:"";position:absolute;left:50%;top:5.5cqw;width:28cqw;height:7cqw;margin-left:-14cqw;border-radius:5cqw;background:#121615;z-index:3}
+#psc .phone .scr{position:relative;border-radius:11cqw;overflow:hidden;background:#f4f6f5;aspect-ratio:9/18.6}
+#psc .dm-h{display:flex;align-items:center;gap:3cqw;padding:16cqw 5cqw 4cqw;background:#fff;border-bottom:1px solid var(--line)}
+#psc .dm-h img{width:12cqw;height:12cqw;border-radius:50%;object-fit:cover}
+#psc .dm-h .sk{width:30cqw;height:3cqw;margin:0}
+#psc .dm{padding:5cqw;display:flex;flex-direction:column;gap:3.5cqw;font:500 5.4cqw/1.3 'Rubik',sans-serif}
+#psc .bub{max-width:78%;padding:3.4cqw 4.4cqw;border-radius:5cqw;animation:psc-chat 9s infinite both}
+#psc .bub.in{align-self:flex-start;background:#fff;color:#1b2522;border-bottom-left-radius:1.4cqw;box-shadow:0 0 0 1px var(--line)}
+#psc .bub.out{align-self:flex-end;background:#1f7aff;width:74%;border-bottom-right-radius:1.4cqw}
+#psc .bub.out .sk{--sk:rgba(255,255,255,.75);height:2.6cqw;margin:1.4cqw 0}
+#psc .typing{align-self:flex-end;display:flex;gap:1.4cqw;background:#dfe6f3;padding:3.4cqw 4.4cqw;border-radius:5cqw;animation:psc-typing 9s infinite both}
+#psc .typing i{width:2cqw;height:2cqw;border-radius:50%;background:#7f8ea8;animation:psc-blink 1s infinite}
+#psc .typing i:nth-child(2){animation-delay:.2s}#psc .typing i:nth-child(3){animation-delay:.4s}
+#psc .paid{align-self:center;display:inline-flex;align-items:center;gap:2cqw;margin-top:3cqw;background:var(--ink);color:var(--lime);font:700 5cqw/1 'Rubik',sans-serif;padding:3cqw 5cqw;border-radius:10cqw;animation:psc-chat 9s infinite both}
+#psc .paid svg{width:5.5cqw;height:5.5cqw}
+#psc .bub.in{animation-delay:0s}
+#psc .bub.out{animation-name:psc-chat2}
+#psc .paid{animation-name:psc-chat3}
+@keyframes psc-chat{0%{opacity:0;transform:translateY(4cqw)}5%,88%{opacity:1;transform:none}95%,100%{opacity:0}}
+@keyframes psc-typing{0%,10%{opacity:0;height:0;padding-block:0;margin-block:-1.75cqw}14%,30%{opacity:1;height:auto;padding-block:3.4cqw;margin-block:0}33%,100%{opacity:0;height:0;padding-block:0;margin-block:-1.75cqw}}
+@keyframes psc-chat2{0%,31%{opacity:0;transform:translateY(4cqw)}36%,88%{opacity:1;transform:none}95%,100%{opacity:0}}
+@keyframes psc-chat3{0%,48%{opacity:0;transform:scale(.6)}54%,88%{opacity:1;transform:none}95%,100%{opacity:0}}
+#psc .bub.hist{animation:none}
+#psc .bub.in.hist{width:66%}
+#psc .bub.in .sk{height:2.6cqw;margin:1.4cqw 0}
+#psc .day-phone{width:58%;max-width:250px;margin:0 auto}
+
+/* ---------- section 5: host ---------- */
+#psc .host{display:grid;grid-template-columns:1fr 1.05fr;gap:50px;align-items:center;margin-top:34px}
+#psc .collage{container-type:inline-size;position:relative;padding:0 6% 22% 4%}
+#psc .collage .main{position:relative;border-radius:2.5cqw;overflow:hidden;aspect-ratio:4/4.6;box-shadow:-5cqw 5cqw 0 var(--lime2),0 6cqw 12cqw -6cqw rgba(4,32,28,.6)}
+#psc .collage .main img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.12) brightness(1.05)}
+#psc .collage .main::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(164,226,29,.55),rgba(11,52,46,.85));mix-blend-mode:multiply}
+#psc .profile{position:absolute;right:0;bottom:2cqw;width:62cqw;background:#fff;border-radius:3cqw;padding:4cqw;box-shadow:0 5cqw 10cqw -5cqw rgba(4,32,28,.6),0 0 0 1px var(--line);transform:rotate(3deg)}
+#psc .profile-top{display:flex;align-items:center;gap:3.4cqw}
+#psc .profile-top img{width:14cqw;height:14cqw;border-radius:50%;object-fit:cover;box-shadow:0 0 0 .8cqw #fff,0 0 0 1.4cqw #d6dcda}
+#psc .profile-top b{display:block;font:700 5cqw/1.1 'Rubik',sans-serif;color:#14231f}
+#psc .profile-top .sk{width:26cqw;height:2.4cqw;margin:1.4cqw 0 0}
+#psc .pstats{display:flex;gap:5cqw;margin-top:4cqw;font:500 4cqw/1.2 'Rubik',sans-serif;color:#5e6b67}
+#psc .pstats b{display:block;font:700 5.4cqw/1.1 'Rubik',sans-serif;color:#14231f}
+#psc .pstats .hit{position:relative}
+#psc .pstats .hit svg{position:absolute;left:-4cqw;top:-3cqw;width:calc(100% + 8cqw);height:calc(100% + 6cqw);overflow:visible}
+#psc .pstats .hit path{fill:none;stroke:var(--red);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1;animation:psc-strike 7s .4s ease-in-out infinite both}
+#psc .pstats .sk{width:12cqw;height:4cqw;margin:0 0 1cqw}
+#psc .polaroid{position:absolute;left:-5cqw;bottom:0;width:40cqw;background:#fff;padding:2.4cqw 2.4cqw 8cqw;transform:rotate(-7deg);box-shadow:0 4cqw 8cqw -4cqw rgba(0,0,0,.55)}
+#psc .polaroid img{aspect-ratio:1;object-fit:cover;width:100%}
+#psc .polaroid::before{content:"";position:absolute;left:30%;top:-2.6cqw;width:16cqw;height:5cqw;background:rgba(230,226,190,.8);transform:rotate(5deg)}
+
+#psc .sig{font:700 46px/1 'Caveat',cursive;color:var(--ink);margin:26px 0 0 36px;transform:rotate(-4deg);display:inline-block}
+#psc .sig svg{display:block;width:180px;height:14px;margin-top:-4px}
+#psc .sig path{fill:none;stroke:var(--red);stroke-width:2.6;stroke-linecap:round}
+#psc .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:30px}
+#psc .q{position:relative;background:#fff;border-radius:10px;padding:26px 22px 22px;box-shadow:0 20px 34px -22px rgba(4,32,28,.45),0 0 0 1px var(--line)}
+#psc .q:nth-child(1){transform:rotate(-1.4deg)}#psc .q:nth-child(2){transform:rotate(.9deg) translateY(12px)}#psc .q:nth-child(3){transform:rotate(-.6deg)}
+#psc .q::before{content:"";position:absolute;left:50%;top:-11px;width:84px;height:22px;margin-left:-42px;background:rgba(222,218,180,.8);transform:rotate(-3deg)}
+#psc .q-top{display:flex;align-items:center;gap:12px}
+#psc .q-top img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none}
+#psc .q-top b{display:block;font:700 16px/1.2 'Rubik',sans-serif;color:#13231f}
+#psc .q-top span{display:block;font-size:14px;line-height:1.3;color:var(--mute)}
+#psc .q .stars{display:block;margin-top:14px;font-size:16px}
+#psc .q blockquote{margin-top:6px;font-size:18px;line-height:1.5;color:#1f2b28}
+#psc mark{background:linear-gradient(transparent 52%,#ffe85c 52%,#ffe85c 92%,transparent 92%);color:inherit;padding:0 2px}
+
+/* ---------- section 6: everything you get ---------- */
+#psc .bundle{container-type:inline-size;position:relative;max-width:1140px;margin:-230px auto 0;aspect-ratio:1000/600;z-index:3}
+#psc .bundle>*{position:absolute}
+#psc .b-floor{left:6%;right:6%;bottom:1%;height:9%;border-radius:50%;background:radial-gradient(closest-side,rgba(4,32,28,.38),transparent)}
+#psc .lap{left:21%;top:6%;width:58%}
+#psc .lap-scr{position:relative;background:#111615;border-radius:1.6cqw 1.6cqw 0 0;padding:1.3cqw;box-shadow:0 0 0 .25cqw #3b4542}
+#psc .lap-in{position:relative;aspect-ratio:16/10;border-radius:.4cqw;overflow:hidden;background:#0f1715;display:grid;grid-template-columns:34% 1fr 22%;grid-template-rows:1fr auto;gap:.6cqw;padding:.6cqw}
+#psc .lap-in .vid{position:relative;overflow:hidden;border-radius:.5cqw;box-shadow:0 0 0 .2cqw var(--lime)}
+#psc .lap-in .slide{position:relative;overflow:hidden;border-radius:.5cqw;padding:2.2cqw 2cqw;background:radial-gradient(120% 90% at 50% 0%,#125743,var(--night));color:#fff}
+#psc .lap-in .slide::before{content:"";position:absolute;inset:-60%;background:repeating-conic-gradient(rgba(198,255,60,.07) 0 4deg,transparent 4deg 12deg)}
+#psc .lap-in .slide>*{position:relative}
+#psc .lap-in .slide small{display:inline-block;font:700 1.1cqw/1 'Rubik',sans-serif;letter-spacing:.12em;color:#14201d;background:var(--lime);padding:.5cqw .8cqw;border-radius:.3cqw}
+#psc .lap-in .slide b{display:block;font:400 3.2cqw/.92 'Bebas Neue',Impact,sans-serif;margin-top:1.4cqw;letter-spacing:.01em}
+#psc .lap-in .slide .sk{--sk:rgba(255,255,255,.22);height:.8cqw;margin:.8cqw 0}
+#psc .lap-in .slide .pg{position:absolute;right:1.4cqw;bottom:1.2cqw;width:9cqw;transform:rotate(4deg);background:#fff;border-radius:.4cqw;padding:.8cqw;box-shadow:0 1cqw 2cqw rgba(0,0,0,.4)}
+#psc .lap-in .slide .pg .sk{--sk:#d7dfdc;height:.6cqw;margin:.5cqw 0}
+#psc .lap-in .slide .pg i{display:block;height:.6cqw;margin:.6cqw 0;border-bottom:.2cqw solid #1d4fd6}
+#psc .lap-in .vid img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+#psc .lap-in .vid .rec{position:absolute;left:1.2cqw;top:1.2cqw;font:700 1.1cqw/1 'Rubik',sans-serif;padding:.5cqw .8cqw;gap:.5cqw}
+#psc .lap-in .vid .rec i{width:.7cqw;height:.7cqw}
+#psc .lap-in .vid figcaption{position:absolute;left:1.2cqw;bottom:1.2cqw;background:rgba(0,0,0,.6);color:#fff;font:600 1.2cqw/1 'Rubik',sans-serif;padding:.6cqw .9cqw;border-radius:.4cqw}
+#psc .lap-in .chat{grid-row:1/3;grid-column:3;border-radius:.5cqw;background:#fff;padding:1.2cqw;display:flex;flex-direction:column;gap:1cqw}
+#psc .lap-in .chat div{display:flex;gap:.7cqw;align-items:flex-start}
+#psc .lap-in .chat img{width:2.6cqw;height:2.6cqw;border-radius:50%;object-fit:cover;flex:none}
+#psc .lap-in .chat .sk{height:.9cqw;margin:.35cqw 0;flex:1}
+#psc .lap-in .chat div>span{flex:1}
+#psc .lap-in .ppl{grid-column:1/3;display:flex;gap:.6cqw}
+#psc .lap-in .ppl img{flex:1;min-width:0;height:6.2cqw;object-fit:cover;border-radius:.4cqw}
+#psc .lap-base{height:1.7cqw;margin:0 -7%;background:linear-gradient(#d8dddc,#a4acaa);border-radius:0 0 2.4cqw 2.4cqw;position:relative;box-shadow:0 1cqw 2cqw -1cqw rgba(0,0,0,.4)}
+#psc .lap-base::before{content:"";position:absolute;left:50%;top:0;width:12%;height:45%;margin-left:-6%;background:#8e9795;border-radius:0 0 1cqw 1cqw}
+
+#psc .b-phone,#psc .b-calc,#psc .b-comm,#psc .b-cal,#psc .day-phone{container-type:inline-size}
+#psc .b-tab{left:1.5%;top:22%;width:27%;transform:rotate(-5deg)}
+#psc .tab-dev{background:#141918;border-radius:3cqw;padding:1.3cqw;box-shadow:0 0 0 .25cqw #3b4542,0 4cqw 6cqw -3cqw rgba(0,0,0,.55)}
+#psc .wbk{position:relative;aspect-ratio:3/4;border-radius:1.4cqw;overflow:hidden;padding:2.4cqw 2.2cqw;color:#fff;background:radial-gradient(130% 80% at 50% 0%,#0f4a3b,var(--night))}
+#psc .wbk::before{content:"";position:absolute;inset:-50%;background:repeating-conic-gradient(rgba(198,255,60,.07) 0 4deg,transparent 4deg 12deg)}
+#psc .wbk>*{position:relative}
+#psc .wbk .mini{display:inline-flex;align-items:center;gap:.6cqw;background:linear-gradient(#fafbfb,#c8cdd0);border-radius:.6cqw;padding:.5cqw 1cqw .4cqw .7cqw;font:400 1.5cqw/1 'Bebas Neue',Impact,sans-serif;color:#13201d}
+#psc .wbk .mini svg{width:1.6cqw;height:1.6cqw}
+#psc .wbk .t1{display:block;font:400 2.3cqw/1 'Bebas Neue',Impact,sans-serif;color:var(--lime);margin-top:2.4cqw;letter-spacing:.02em}
+#psc .wbk .t2{display:block;font:400 4.6cqw/.88 'Bebas Neue',Impact,sans-serif;margin-top:.5cqw}
+#psc .wbk .t3{display:inline-block;font:700 2.1cqw/1 'Caveat',cursive;color:#14201d;background:var(--lime);padding:.5cqw 1cqw;margin-top:1.4cqw;transform:rotate(-3deg)}
+#psc .wbk .pages{position:absolute;left:2.2cqw;right:2.2cqw;bottom:2cqw;display:flex;gap:1cqw}
+#psc .wbk .pages div{flex:1;aspect-ratio:3/4;background:#fff;border-radius:.4cqw;padding:.8cqw .7cqw}
+#psc .wbk .pages .sk{height:.55cqw;margin:.55cqw 0;--sk:#cdd6d3}
+#psc .wbk .pages .bl{display:block;height:.55cqw;margin:.7cqw 0;border-bottom:.2cqw solid #9db3ac}
+
+#psc .b-phone{right:3%;top:16%;width:15%;transform:rotate(5deg)}
+#psc .b-phone .scr{font-size:5cqw}
+#psc .b-phone .lab{display:block;margin:15cqw 5cqw 0;background:var(--ink);color:var(--lime);font:400 9cqw/.95 'Bebas Neue',Impact,sans-serif;padding:4cqw 4cqw 3cqw;border-radius:3cqw;letter-spacing:.01em}
+#psc .b-phone .dm{padding:4cqw 5cqw}
+#psc .b-phone .bub,#psc .b-phone .paid{animation:none}
+
+#psc .b-calc{left:13%;bottom:4%;width:14%;transform:rotate(-8deg);z-index:4}
+#psc .calc{background:linear-gradient(#2a3230,#141a19);border-radius:7cqw;padding:7cqw 7cqw 8cqw;box-shadow:inset 0 .8cqw 0 rgba(255,255,255,.12),0 6cqw 10cqw -4cqw rgba(0,0,0,.6)}
+#psc .calc small{display:block;font:700 6.3cqw/1.15 'Rubik',sans-serif;color:#cfd8d5;letter-spacing:.02em}
+#psc .calc .lcd{margin-top:4cqw;background:linear-gradient(#cbe6a2,#b2d47f);border-radius:3cqw;padding:3cqw 5cqw;text-align:right;font:400 20cqw/1 'Bebas Neue',Impact,sans-serif;color:#1e2a12;box-shadow:inset 0 1cqw 2cqw rgba(0,0,0,.25)}
+#psc .calc .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:4cqw;margin-top:6cqw}
+#psc .calc .keys i{aspect-ratio:1;border-radius:3cqw;background:#3a4542;box-shadow:inset 0 -1cqw 0 rgba(0,0,0,.35)}
+#psc .calc .keys i:nth-child(4n){background:var(--red)}
+#psc .calc .keys i:last-child{background:var(--lime2)}
+
+#psc .b-comm{right:13%;bottom:3%;width:31%;z-index:4;transform:rotate(2deg)}
+#psc .win{background:#fff;border-radius:3cqw;overflow:hidden;box-shadow:0 6cqw 12cqw -5cqw rgba(4,32,28,.6),0 0 0 1px var(--line)}
+#psc .win-bar{display:flex;align-items:center;gap:1.6cqw;padding:2.6cqw 3.4cqw;background:#eef2f1;border-bottom:1px solid var(--line)}
+#psc .win-bar i{width:2.4cqw;height:2.4cqw;border-radius:50%;background:#ff5f57}
+#psc .win-bar i:nth-child(2){background:#febc2e}#psc .win-bar i:nth-child(3){background:#28c840}
+#psc .win-bar b{margin-left:2cqw;font:700 3.6cqw/1 'Rubik',sans-serif;color:#24302d}
+#psc .win-body{padding:3cqw 3.4cqw 3.6cqw}
+#psc .win-body .qa{display:inline-flex;align-items:center;gap:1.4cqw;font:700 3.4cqw/1 'Rubik',sans-serif;color:#fff;background:var(--red);padding:1.6cqw 2.6cqw;border-radius:5cqw}
+#psc .win-body .qa i{width:1.6cqw;height:1.6cqw;border-radius:50%;background:#fff;animation:psc-blink 1.4s infinite}
+#psc .msg{display:flex;gap:2.4cqw;align-items:flex-start;margin-top:2.6cqw}
+#psc .msg img{width:8cqw;height:8cqw;border-radius:50%;object-fit:cover;flex:none}
+#psc .msg div{flex:1;background:#f3f6f5;border-radius:2cqw;padding:1.4cqw 2.4cqw}
+#psc .msg .sk{height:2cqw;margin:1cqw 0}
+
+#psc .b-cal{left:62%;top:0;width:19%;z-index:4;transform:rotate(3deg)}
+#psc .cal{background:#fff;border-radius:4cqw;overflow:hidden;box-shadow:0 6cqw 12cqw -5cqw rgba(4,32,28,.6),0 0 0 1px var(--line)}
+#psc .cal-h{background:var(--red);color:#fff;font:400 10cqw/1 'Bebas Neue',Impact,sans-serif;padding:5cqw 6cqw 4cqw;letter-spacing:.02em}
+#psc .cal-r{display:flex;justify-content:space-between;align-items:center;padding:4.4cqw 6cqw;border-top:1px solid var(--line);font:700 6.4cqw/1 'Rubik',sans-serif;color:var(--ink)}
+#psc .cal-r span{font:600 5.4cqw/1 'Rubik',sans-serif;color:var(--mute)}
+#psc .cal-r i{width:5cqw;height:5cqw;border-radius:50%;background:var(--lime2);box-shadow:0 0 0 1.4cqw #eaf8cf}
+
+#psc .getcard{max-width:820px;margin:20px auto 0}
+#psc .getlist{list-style:none;max-width:620px;margin:0 auto}
+#psc .getlist li{display:flex;align-items:center;gap:16px;padding:15px 4px;border-bottom:1px dashed #dbe2df;font-size:19px;line-height:1.4;color:#1d2a27}
+#psc .getlist li:last-child{border-bottom:0}
+#psc .getlist .ic{flex:none;width:46px;height:46px;border-radius:10px;display:grid;place-items:center;background:#eef6e0;color:#3f7a06;box-shadow:inset 0 0 0 1.5px #d5eab0}
+#psc .getlist .ic svg{width:24px;height:24px}
+#psc .getlist strong{font-weight:700}
+#psc .urgent{max-width:620px;margin:30px auto 0;padding:18px 22px;border:2px dashed var(--red);border-radius:8px;background:#fff6f7;text-align:center;font:700 clamp(17px,2vw,20px)/1.45 'Rubik',sans-serif;color:var(--red)}
+#psc .urgent svg{display:inline-block;vertical-align:-4px;width:22px;height:22px;margin-right:6px}
+
+/* ---------- footer ---------- */
+#psc .foot{background:radial-gradient(120% 140% at 50% 0%,#0c3a2f,var(--night));color:#a9bdb6;text-align:center;padding:50px 20px 44px;font-size:14px}
+#psc .foot p{margin-top:16px}
+#psc .foot a{color:#d9e7e2;text-decoration:none;margin:0 8px}
+#psc .foot a:hover{text-decoration:underline}
+
+/* ---------- modal ---------- */
+#psc .modal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(3,20,17,.72);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+#psc .modal.open{display:flex}
+#psc .m-box{position:relative;width:100%;max-width:470px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 40px 90px -20px rgba(0,0,0,.7);animation:psc-in .3s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes psc-in{from{opacity:0;transform:translateY(16px) scale(.97)}}
+#psc .m-head{background:radial-gradient(120% 160% at 50% -20%,#125743,var(--night));padding:26px 26px 22px;text-align:center;color:#fff}
+#psc .m-head h2{font:400 42px/.95 'Bebas Neue',Impact,sans-serif;color:var(--lime);letter-spacing:.01em}
+#psc .m-head p{font:500 15px/1.4 'Rubik',sans-serif;color:#cfe0da;margin-top:8px}
+#psc .m-bar{height:8px;background:#e8eeec}
+#psc .m-bar i{display:block;height:100%;width:50%;background:repeating-linear-gradient(135deg,var(--red) 0 8px,#f0466a 8px 16px);animation:psc-bar 1.2s linear infinite;background-size:22.6px 100%}
+@keyframes psc-bar{to{background-position:22.6px 0}}
+#psc form{padding:22px 26px 26px}
+#psc .fld{margin-top:14px}
+#psc .fld:first-child{margin-top:0}
+#psc .fld label{display:flex;justify-content:space-between;font:600 14px/1.2 'Rubik',sans-serif;color:#24302d;margin-bottom:6px}
+#psc .fld label span{color:var(--mute);font-weight:500}
+#psc .fld input{width:100%;font:500 17px/1.2 'Source Sans 3',sans-serif;padding:14px 15px;border:1.5px solid #cfd8d5;border-radius:8px;background:#fafcfb;color:#13201d;outline:0;transition:border-color .2s,box-shadow .2s}
+#psc .fld input:focus{border-color:var(--ink);box-shadow:0 0 0 4px rgba(164,226,29,.35);background:#fff}
+#psc form .cta{width:100%;margin-top:20px;padding:19px 20px}
+#psc .m-x{position:absolute;right:10px;top:10px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;font-size:22px;line-height:1}
+#psc .m-x:hover{background:rgba(255,255,255,.25)}
+
+/* ---------- responsive ---------- */
+@media (max-width:860px){
+  #psc .hero-card{grid-template-columns:1fr;gap:0;text-align:left}
+  #psc .hc-img{min-height:0;height:360px;order:2;margin:10px -26px 0}
+  #psc .hc-img img{left:50%;width:244px;transform:translateX(-50%);
+    -webkit-mask-image:linear-gradient(90deg,transparent 1%,#000 18%,#000 82%,transparent 99%);mask-image:linear-gradient(90deg,transparent 1%,#000 18%,#000 82%,transparent 99%)}
+  #psc .hc-img::before{left:50%;width:250px;margin-left:-125px;top:20px}
+  #psc .hc-copy{padding-bottom:10px}
+  #psc .fit,#psc .host{grid-template-columns:1fr}
+  #psc .nobuy{max-width:300px;margin:10px auto 40px}
+  #psc .pc-body{width:auto}
+  #psc .pc{grid-template-columns:1fr}
+  #psc .pc .pc-art{grid-column:1;grid-row:3;width:84%;justify-self:center;margin:0 0 34px}
+  #psc .day{grid-template-columns:1fr;padding-left:70px}
+  #psc .badge{width:54px;height:54px}#psc .badge b{font-size:28px}
+  #psc .rail{left:25px}
+  #psc .quotes{grid-template-columns:1fr;max-width:460px;margin-left:auto;margin-right:auto}
+  #psc .q:nth-child(2){transform:rotate(.9deg)}
+  #psc .collage{width:100%;max-width:440px;margin:0 auto}
+  #psc .flipnote{display:none}
+  #psc .bundle{margin-top:-130px}
+}
+@media (max-width:560px){
+  #psc{font-size:16px}
+  #psc .sec{padding:0 12px 64px}
+  #psc .band{padding:54px 16px 140px}
+  #psc .lift{margin-top:-104px}
+  #psc .hero{padding-bottom:170px}
+  #psc .live{margin-top:30px}
+  #psc .cta{width:100%;padding:20px 18px}
+  #psc .cd>div{min-width:56px}
+  #psc .stats{grid-template-columns:1fr}
+  #psc .stats>div+div::before{left:22%;right:22%;top:0;bottom:auto;width:auto;height:2px;background:repeating-linear-gradient(90deg,transparent 0 4px,rgba(198,255,60,.5) 4px 8px)}
+  #psc .day{padding-left:0;padding-top:96px}
+  #psc .badge{top:30px}
+  #psc .rail{display:none}
+  #psc .checklist{padding:20px 18px}
+  #psc .pc-head,#psc .pc-body{padding-left:20px;padding-right:20px}
+  #psc .getlist li{font-size:17px}
+  #psc .band-get{padding-bottom:150px}
+  #psc .bundle{margin-top:-120px;width:116%;margin-left:-8%}
+  #psc .hc-img{margin:0 -18px}
+}
+@media (prefers-reduced-motion:reduce){
+  #psc *,#psc *::before,#psc *::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body style="margin:0">
+<div id="psc">
+
+<!-- ===================== HERO ===================== -->
+<div class="topbar">Free 3-Day Challenge &nbsp;·&nbsp; <span>Starts Monday, Oct 12 at 12 PM EST. Just 1 hour a day.</span></div>
+
+<header class="hero">
+  <div class="plate">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3 6.4 7 .8-5.2 4.8 1.4 6.9L12 17.2l-6.2 3.5 1.4-6.9L2 9l7-.8z" fill="#e3193f" stroke="#7d0a1f" stroke-width=".8"/></svg>
+    <span><b>Pre-Sold Cohort</b><small>Free 3-Day Challenge</small></span>
+  </div>
+
+  <p class="pre">For coaches and course creators with <span class="circ">under 5,000 followers<svg viewBox="0 0 200 50" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M14 30C6 13 70 3 120 4c50 1 80 9 76 23-4 15-70 21-120 19C30 44 4 37 9 24 14 13 50 7 70 7"/></svg></span>...</p>
+
+  <h1 id="hero-h">The 3-Post "Pre-Sold Cohort" Method That Lets Small-Audience Coaches Fill A $2,000 Group Program <span class="lime">Before They Record A Single Lesson</span></h1>
+
+  <p class="hero-sub">Join the free 3-day challenge and watch me validate, pre-sell, and fill a 10-seat cohort live, using the audience you already have.</p>
+
+  <!-- hero visual: the live challenge room -->
+  <div class="live" aria-hidden="true">
+    <div class="live-top"><span class="rec"><i></i>LIVE</span><span>Day 1</span><span class="grow"></span><span class="wdots"><i></i><i></i><i></i></span></div>
+    <div class="live-body">
+      <figure class="spk"><img src="images/host.jpg" alt=""><figcaption><span class="bars"><i></i><i></i><i></i></span>Daniel Reyes</figcaption></figure>
+      <div class="wb">
+        <svg viewBox="0 0 400 410">
+          <text x="26" y="52" font-size="40" fill="#1d4fd6" style="animation-delay:.3s">3 posts</text>
+          <path class="ln" pathLength="1" d="M24 62c40 4 80-2 112 3" stroke="#1d4fd6" stroke-width="3.5" style="animation-delay:.6s"/>
+          <path class="ln" pathLength="1" d="M28 92c45-2 90 2 128-1 2 18-1 34 1 50-40 2-86-1-129 1-2-17 1-33 0-50z" stroke="#14201d" stroke-width="3" style="animation-delay:.8s"/>
+          <text x="40" y="128" font-size="30" fill="#14201d" style="animation-delay:1.1s">1 Signal</text>
+          <path class="ln" pathLength="1" d="M28 172c45-2 90 2 128-1 2 18-1 34 1 50-40 2-86-1-129 1-2-17 1-33 0-50z" stroke="#14201d" stroke-width="3" style="animation-delay:1.2s"/>
+          <text x="40" y="208" font-size="30" fill="#14201d" style="animation-delay:1.5s">2 Proof</text>
+          <path class="ln" pathLength="1" d="M28 252c45-2 90 2 128-1 2 18-1 34 1 50-40 2-86-1-129 1-2-17 1-33 0-50z" stroke="#14201d" stroke-width="3" style="animation-delay:1.6s"/>
+          <text x="40" y="288" font-size="30" fill="#14201d" style="animation-delay:1.9s">3 Door</text>
+          <path class="ln" pathLength="1" d="M164 118c40 10 56 40 70 78M164 196c22 0 44 2 66 4M164 278c36-6 54-30 68-62" stroke="#e3193f" stroke-width="3" style="animation-delay:2s"/>
+          <path class="ln" pathLength="1" d="M222 186l12 12-14 8" stroke="#e3193f" stroke-width="3" style="animation-delay:2.4s"/>
+          <text x="250" y="150" font-size="34" fill="#e3193f" style="animation-delay:2.5s">10 seats</text>
+          <g stroke="#14201d" stroke-width="2.6">
+            <path class="ln" pathLength="1" d="M252 172h22v22h-22zM282 172h22v22h-22zM312 172h22v22h-22zM342 172h22v22h-22zM372 172h22v22h-22zM252 204h22v22h-22zM282 204h22v22h-22zM312 204h22v22h-22zM342 204h22v22h-22zM372 204h22v22h-22z" style="animation-delay:2.7s"/>
+          </g>
+          <g stroke="#1a8f3c" stroke-width="3.4">
+            <path class="ln tick" pathLength="1" d="M255 183l6 6 11-14" style="animation-delay:3.2s"/>
+            <path class="ln tick" pathLength="1" d="M285 183l6 6 11-14" style="animation-delay:3.5s"/>
+            <path class="ln tick" pathLength="1" d="M315 183l6 6 11-14" style="animation-delay:3.8s"/>
+            <path class="ln tick" pathLength="1" d="M345 183l6 6 11-14" style="animation-delay:4.1s"/>
+            <path class="ln tick" pathLength="1" d="M375 183l6 6 11-14" style="animation-delay:4.4s"/>
+          </g>
+          <text x="244" y="290" font-size="30" fill="#1d4fd6" style="animation-delay:3s">$2,000</text>
+          <path class="ln" pathLength="1" d="M236 262c30-12 90-14 112 4 14 14-12 40-60 38-40-2-62-14-52-34" stroke="#1d4fd6" stroke-width="2.6" style="animation-delay:3.3s"/>
+          <text x="40" y="372" font-size="28" fill="#5d6a66" style="animation-delay:3.6s">1 short DM script</text>
+          <path class="ln" pathLength="1" d="M36 384c60-5 150 3 210-2" stroke="#5d6a66" stroke-width="2.4" style="animation-delay:3.9s"/>
+        </svg>
+      </div>
+    </div>
+    <div class="live-strip"><img src="images/p1.jpg" alt=""><img src="images/p2.jpg" alt=""><img src="images/p3.jpg" alt=""><img src="images/p4.jpg" alt=""><img src="images/p5.jpg" alt=""><img src="images/p6.jpg" alt=""></div>
+    <div class="note">Day 1 · live</div>
+  </div>
+
+  <p class="objection">Without paid ads, without a big following, and without building the course first.</p>
+
+  <div class="cta-row">
+    <button class="cta js-open" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5h18V10a2 2 0 0 0 0 4v3.5H3V14a2 2 0 0 0 0-4z"/><path d="M14.5 7v10" stroke-dasharray="1.8 2"/></svg>Save My Free Seat</button>
+    <div class="cd" data-countdown aria-label="Time until the challenge starts">
+      <div><b data-u="d">00</b><span>Days</span></div><div><b data-u="h">00</b><span>Hrs</span></div><div><b data-u="m">00</b><span>Min</span></div><div><b data-u="s">00</b><span>Sec</span></div>
+    </div>
+  </div>
+  <p class="cta-sub">Starts Monday, Oct 12 at 12 PM EST. Just 1 hour a day.</p>
+  <div class="cred"><span class="stars" aria-hidden="true">★★★★★</span><span>4.9/5 from 612 past challenge members</span></div>
+</header>
+
+<section class="sec hero-wrap" style="padding-bottom:80px">
+  <div class="card lift hero-card">
+    <div class="hc-img"><img src="images/host-cutout.webp" alt="Daniel Reyes"></div>
+    <div class="hc-copy">
+      <h2 class="h-ink">Without paid ads, without a big following, and without building the course first.</h2>
+      <ul class="ticks">
+        <li><strong>Get your first 5 paid seats</strong> from 3 posts and 1 short DM script</li>
+        <li><strong>Find out if your offer sells</strong> before you spend 80 hours building it</li>
+        <li><strong>Walk away with a $2,000 offer</strong> written, priced, and ready to post</li>
+      </ul>
+    </div>
+  </div>
+  <div class="stats">
+    <div><b>1,870+</b><span>coaches trained</span></div>
+    <div><b>$6.4M</b><span>in pre-sold cohort revenue</span></div>
+    <div><b>214</b><span>cohorts filled in 2026</span></div>
+  </div>
+</section>
+
+<!-- ===================== IS THIS FOR YOU ===================== -->
+<section class="band"><h2 class="h-band">This Challenge Is Built For You If...</h2></section>
+<section class="sec">
+  <div class="card lift">
+    <div class="fit">
+      <div class="checklist">
+        <label><input type="checkbox" checked><span class="cbox"><svg viewBox="0 0 20 20"><path pathLength="1" d="M4.5 10.5l3.5 3.5 7.5-8"/></svg></span><span>You have <b>300 to 5,000 followers</b>, people like your posts, but nobody buys</span></label>
+        <label><input type="checkbox" checked><span class="cbox"><svg viewBox="0 0 20 20"><path pathLength="1" d="M4.5 10.5l3.5 3.5 7.5-8"/></svg></span><span>You spent weeks building a course that sold 3 copies</span></label>
+        <label><input type="checkbox" checked><span class="cbox"><svg viewBox="0 0 20 20"><path pathLength="1" d="M4.5 10.5l3.5 3.5 7.5-8"/></svg></span><span>You know you could run a group program, you just don't know how to fill it</span></label>
+        <label><input type="checkbox" checked><span class="cbox"><svg viewBox="0 0 20 20"><path pathLength="1" d="M4.5 10.5l3.5 3.5 7.5-8"/></svg></span><span>You hate the idea of sales calls and pushy DMs</span></label>
+        <label><input type="checkbox" checked><span class="cbox"><svg viewBox="0 0 20 20"><path pathLength="1" d="M4.5 10.5l3.5 3.5 7.5-8"/></svg></span><span>You want your <b>first $10,000 month</b> from coaching</span></label>
+      </div>
+      <div class="nobuy" aria-hidden="true">
+        <div class="post">
+          <div class="post-h"><img src="images/host.jpg" alt="" style="object-position:50% 15%"><div><span class="sk" style="width:30cqw;height:3.2cqw"></span><span class="sk"></span></div></div>
+          <span class="sk"></span><span class="sk b" style="width:72%"></span>
+          <img class="post-img" src="images/workshop.jpg" alt="">
+          <div class="post-f">
+            <span class="heart"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.6 4.5c2.2 0 3.6 1.2 5.4 3.2 1.8-2 3.2-3.2 5.4-3.2 3.6 0 5.7 3.9 4.2 7.3C19.5 16.4 12 21 12 21z"/></svg>1.2k</span>
+            <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.8A8 8 0 1 1 21 12z"/></svg>86</span>
+          </div>
+        </div>
+        <div class="sale">
+          <div class="sale-top"><i></i><span class="sk"></span></div>
+          <b>$0.00</b>
+          <svg viewBox="0 0 200 40" preserveAspectRatio="none"><path d="M0 12h200M0 24h200" stroke="#eef2f1" stroke-width="1.5"/><path d="M0 36h200" stroke="#cfd8d5" stroke-width="1.5" stroke-dasharray="4 5"/><path d="M2 35c40 .6 80-.4 120 0s56 .5 76 0" fill="none" stroke="#e3193f" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="notfor">
+      <h3>It's Not For You If:</h3>
+      <ul>
+        <li>You want passive income with zero client work</li>
+        <li>You don't have a skill people already ask you about</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MECHANISM ===================== -->
+<section class="band"><h2 class="h-band">Why Small-Audience Launches Flop</h2><p class="h-band-sub">(It's Not Your Follower Count)</p></section>
+<section class="sec">
+  <div class="card lift">
+    <div class="lead narrow">
+      <p>Most coaches build first and sell second. They spend 2 months recording modules, designing a logo, and setting up a funnel. Then they launch to 1,200 followers and make 2 sales.</p>
+    </div>
+
+    <div class="order narrow" aria-hidden="true">
+      <div class="lane lane-bad">
+        <span class="lane-tag">Build first, sell second</span>
+        <ol>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg>2 months recording modules</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18zM2 2l7.6 7.6"/><circle cx="11" cy="11" r="2"/></svg>a logo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18l-7 8v6l-4 2v-8z"/></svg>a funnel</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l15-6v14L3 13zM7 12.5V18h3v-4.3"/></svg>1,200 followers</li>
+          <li class="res"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3 7l6 6 4-4 8 8M21 11v6h-6"/></svg>2 sales</li>
+        </ol>
+        <svg class="strike" viewBox="0 0 600 60" preserveAspectRatio="none"><path pathLength="1" d="M4 40C80 22 150 46 230 28s160 18 230 0 120 12 136-6"/></svg>
+      </div>
+      <div class="lane lane-good">
+        <span class="lane-tag">Sell the cohort first</span>
+        <ol>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 8h10M7 12h10M7 16h6"/></svg>3 posts</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.8A8 8 0 1 1 21 12z"/></svg>1 short DM script</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-4 3.4-6 6.5-6s5.7 2 6.5 6M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.5c1.6.8 2.7 2.6 3 5.5"/></svg>paid seats</li>
+          <li class="res"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M7 14h3M7 17h6"/></svg>build it week by week</li>
+        </ol>
+      </div>
+      <div class="flipnote hand"><svg viewBox="0 0 54 60"><path d="M40 6C56 18 52 44 30 50M30 50l8-9M30 50l10 5"/></svg></div>
+    </div>
+
+    <div class="order-quote">
+      <p class="h-ink">The audience size was never the problem. <span class="uline">The order was.<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path pathLength="1" d="M2 8C50 2 120 3 198 6"/></svg></span></p>
+    </div>
+
+    <p class="kick center" style="margin-top:46px">The Pre-Sold Cohort Method flips it in 3 posts:</p>
+
+    <div class="pcs">
+      <!-- Post 1 -->
+      <article class="pc">
+        <div class="pc-head"><span class="pc-k">Post 1</span><h3>The Signal Post.</h3></div>
+        <div class="pc-body"><p>Shows you who has the problem right now. Most coaches get 15 to 40 replies.</p></div>
+        <div class="pc-art mock" aria-hidden="true">
+          <div class="post">
+            <div class="post-h"><img src="images/host.jpg" alt="" style="object-position:50% 15%"><div><b>Daniel Reyes</b><span class="sk"></span></div></div>
+            <span class="sk"></span><span class="sk c"></span><span class="sk b" style="width:58%"></span>
+          </div>
+          <div class="replies">
+            <div class="rp"><img src="images/p1.jpg" alt=""><span class="sk"></span></div>
+            <div class="rp"><img src="images/p6.jpg" alt=""><span class="sk b"></span></div>
+            <div class="rp"><img src="images/p3.jpg" alt=""><span class="sk c"></span></div>
+            <div class="rp"><img src="images/p8.jpg" alt=""><span class="sk"></span></div>
+            <div class="rp"><img src="images/p5.jpg" alt=""><span class="sk b"></span></div>
+          </div>
+        </div>
+      </article>
+      <!-- Post 2 -->
+      <article class="pc">
+        <div class="pc-head"><span class="pc-k">Post 2</span><h3>The Proof Post.</h3></div>
+        <div class="pc-body"><p>Shows the result you'll get them, so the offer sells before you pitch it.</p></div>
+        <div class="pc-art mock" aria-hidden="true" style="padding-bottom:12%">
+          <div class="post">
+            <div class="post-h"><img src="images/host.jpg" alt="" style="object-position:50% 15%"><div><b>Daniel Reyes</b><span class="sk"></span></div></div>
+            <span class="sk b"></span>
+            <img class="post-img" src="images/community.jpg" alt="" style="aspect-ratio:16/10">
+          </div>
+          <div class="chart-tape">
+            <svg viewBox="0 0 200 90">
+              <path d="M10 80h182M10 10v70" stroke="#9aa6a2" stroke-width="1.6" fill="none"/>
+              <path class="ln" pathLength="1" d="M12 74c22-2 34-8 48-14s26-4 40-16 26-10 40-22 30-12 46-16" stroke="#3f8a0c" stroke-width="4"/>
+              <path class="ln" pathLength="1" d="M176 8l12 0-4 11" stroke="#3f8a0c" stroke-width="3.4" style="animation-delay:.6s"/>
+            </svg>
+          </div>
+        </div>
+      </article>
+      <!-- Post 3 -->
+      <article class="pc">
+        <div class="pc-head"><span class="pc-k">Post 3</span><h3>The Door Post.</h3></div>
+        <div class="pc-body"><p>Opens 10 founding seats, with a 2-line DM that closes the sale.</p></div>
+        <div class="pc-art mock" aria-hidden="true">
+          <div class="post">
+            <div class="post-h"><img src="images/host.jpg" alt="" style="object-position:50% 15%"><div><b>Daniel Reyes</b><span class="sk"></span></div></div>
+            <div class="seat-h"><b>10 founding seats</b><span>OPEN</span></div>
+            <div class="seats">
+              <div class="seat"><img src="images/leah.jpg" alt="" style="animation-delay:0s"></div>
+              <div class="seat"><img src="images/p2.jpg" alt="" style="animation-delay:.5s"></div>
+              <div class="seat"><img src="images/omar.jpg" alt="" style="animation-delay:1s"></div>
+              <div class="seat"><img src="images/p7.jpg" alt="" style="animation-delay:1.5s"></div>
+              <div class="seat"><img src="images/tasha.jpg" alt="" style="animation-delay:2s"></div>
+              <div class="seat"><img src="images/p4.jpg" alt="" style="animation-delay:2.5s"></div>
+              <div class="seat"><img src="images/p1.jpg" alt="" style="animation-delay:3s"></div>
+              <div class="seat"><img src="images/p6.jpg" alt="" style="animation-delay:3.5s"></div>
+              <div class="seat"><img src="images/p3.jpg" alt="" style="animation-delay:4s"></div>
+              <div class="seat"><img src="images/p8.jpg" alt="" style="animation-delay:4.5s"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p class="pc-close narrow">You sell the cohort first. Then you build it week by week, with the people who already paid.</p>
+  </div>
+</section>
+
+<!-- ===================== 3 DAYS ===================== -->
+<section class="band"><h2 class="h-band">Here's What We'll Build<br>Together In 3 Days</h2></section>
+<section class="sec">
+  <div class="card lift">
+    <div class="days" id="days">
+      <div class="rail" aria-hidden="true"><i></i></div>
+
+      <div class="day">
+        <div class="badge" aria-hidden="true"><small>DAY</small><b>1</b></div>
+        <div>
+          <h3><span>Day 1</span>Find The Offer People Already Want</h3>
+          <p>Post your Signal Post live and learn how to read the replies to pick an offer worth $2,000.</p>
+        </div>
+        <div class="mock" aria-hidden="true" style="padding:6% 4% 0 0">
+          <div class="board">
+            <div class="post-h"><img src="images/host.jpg" alt="" style="object-position:50% 15%"><div><b>Signal Post</b><span class="sk"></span></div></div>
+            <div class="board-row"><img src="images/p2.jpg" alt=""><div class="t"><span class="sk"></span><span class="sk b" style="width:60%"></span></div></div>
+            <div class="board-row"><img src="images/p5.jpg" alt=""><div class="t"><span class="hl"></span><span class="sk c"></span><span class="sk" style="width:74%"></span></div></div>
+            <div class="board-row"><img src="images/p4.jpg" alt=""><div class="t"><span class="sk b"></span><span class="sk c" style="width:40%"></span></div></div>
+            <div class="board-row"><img src="images/p7.jpg" alt=""><div class="t"><span class="hl"></span><span class="sk"></span><span class="sk b" style="width:66%"></span></div></div>
+            <div class="board-row"><img src="images/p1.jpg" alt=""><div class="t"><span class="sk c"></span><span class="sk" style="width:50%"></span></div></div>
+          </div>
+          <div class="tag"><b>$2,000</b></div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="badge" aria-hidden="true"><small>DAY</small><b>2</b></div>
+        <div>
+          <h3><span>Day 2</span>Write The Posts That Pre-Sell It</h3>
+          <p>Get the Proof Post and Door Post templates, filled in for your niche during the session.</p>
+        </div>
+        <div class="mock" aria-hidden="true">
+          <div class="papers">
+            <div class="sheet s2"><span class="tab">Door Post</span>
+              <div class="fl"><span class="sk" style="width:24cqw"></span><svg viewBox="0 0 100 20" preserveAspectRatio="none"></svg></div>
+              <span class="sk b" style="height:1.9cqw;margin:2.4cqw 0"></span>
+              <div class="fl"><span class="sk c" style="width:30cqw"></span><svg viewBox="0 0 100 20" preserveAspectRatio="none"></svg></div>
+            </div>
+            <div class="sheet s1"><span class="tab">Proof Post</span>
+              <div class="fl"><span class="sk" style="width:20cqw"></span><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path pathLength="1" d="M3 14c3-9 6 3 9-2s4-8 7 0 5 2 8-3 3 6 7 3 4-7 8-2 3 5 7 1 5-6 8-1 3 3 6 0"/></svg></div>
+              <span class="sk" style="height:1.9cqw;margin:2.4cqw 0"></span>
+              <div class="fl"><span class="sk b" style="width:28cqw"></span><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path pathLength="1" d="M3 13c4-8 6 4 10-1s3-7 7 0 4 2 8-2 4 6 8 2 3-6 7-1 4 4 8 0"/></svg></div>
+              <span class="sk c" style="height:1.9cqw;margin:2.4cqw 0"></span>
+              <div class="fl"><span class="sk c" style="width:14cqw"></span><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path pathLength="1" d="M3 14c3-8 7 3 10-2s4-7 8 0 3 3 7-2 5 6 9 2 3-6 8-1 4 4 7 1 4-5 8-1 3 3 6 0"/></svg></div>
+              <span class="sk b" style="height:1.9cqw;margin:2.4cqw 0;width:70%"></span>
+              <div class="fl"><span class="sk" style="width:22cqw"></span><svg viewBox="0 0 100 20" preserveAspectRatio="none"><path pathLength="1" d="M3 13c4-9 6 3 9-1s4-7 8 0 4 3 7-2 4 5 8 2 4-6 8-1"/></svg></div>
+            </div>
+            <svg class="clip" viewBox="0 0 30 70"><path d="M20 14v38a7 7 0 0 1-14 0V10a5 5 0 0 1 10 0v40a2.5 2.5 0 0 1-5 0V16" fill="none" stroke="#8c979a" stroke-width="3" stroke-linecap="round"/></svg>
+            <svg class="pen" viewBox="0 0 200 24"><rect x="30" y="4" width="150" height="16" rx="8" fill="#0b342e"/><rect x="150" y="4" width="34" height="16" rx="8" fill="#a4e21d"/><path d="M30 4L4 12l26 8z" fill="#e8d7b4"/><path d="M10 10.2L4 12l6 1.8z" fill="#1d4fd6"/><rect x="60" y="1" width="60" height="5" rx="2.5" fill="#c3cbc9"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="badge" aria-hidden="true"><small>DAY</small><b>3</b></div>
+        <div>
+          <h3><span>Day 3</span>Close Your First Seats In The DMs</h3>
+          <p>Use the 2-line DM script that turns "how much?" into a paid seat, without a sales call.</p>
+        </div>
+        <div aria-hidden="true">
+          <div class="day-phone"><div class="phone"><div class="scr">
+            <div class="dm-h"><img src="images/p5.jpg" alt=""><span class="sk"></span></div>
+            <div class="dm">
+              <div class="bub in hist"><span class="sk"></span><span class="sk c" style="width:60%"></span></div>
+              <div class="bub out hist" style="width:62%"><span class="sk b"></span></div>
+              <div class="bub in">how much?</div>
+              <div class="typing"><i></i><i></i><i></i></div>
+              <div class="bub out"><span class="sk"></span><span class="sk b" style="width:70%"></span></div>
+              <div class="paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Paid seat</div>
+            </div>
+          </div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <button class="cta js-open" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5h18V10a2 2 0 0 0 0 4v3.5H3V14a2 2 0 0 0 0-4z"/><path d="M14.5 7v10" stroke-dasharray="1.8 2"/></svg>Save My Free Seat</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HOST + PROOF ===================== -->
+<section class="sec dots" style="padding-top:80px">
+  <div class="card">
+    <h2 class="h-ink center">Meet Your Host, Daniel Reyes</h2>
+    <div class="host">
+      <div class="collage" aria-hidden="true">
+        <div class="main"><img src="images/host.jpg" alt=""></div>
+        <div class="polaroid"><img src="images/community.jpg" alt=""></div>
+        <div class="profile">
+          <div class="profile-top"><img src="images/host.jpg" alt="" style="object-position:50% 15%"><div><b>Daniel Reyes</b><span class="sk"></span></div></div>
+          <div class="pstats">
+            <div><span class="sk"></span>posts</div>
+            <div class="hit"><b>740</b>followers<svg viewBox="0 0 100 50" preserveAspectRatio="none"><path pathLength="1" d="M10 28C8 10 60 2 88 12c16 8 6 30-30 34C24 49 4 40 8 26 11 16 40 8 56 8"/></svg></div>
+            <div><span class="sk"></span>following</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <ul class="ticks">
+          <li>Former high school teacher who filled his first cohort with <strong>740 followers</strong></li>
+          <li>Has helped <strong>1,870+ coaches</strong> pre-sell group programs since 2021</li>
+          <li>His students filled <strong>214 cohorts</strong> in 2026 alone</li>
+        </ul>
+        <div class="sig" aria-hidden="true">Daniel Reyes<svg viewBox="0 0 180 14" preserveAspectRatio="none"><path d="M4 9c40-6 110-7 172-2"/></svg></div>
+      </div>
+    </div>
+
+    <p class="kick center" style="margin-top:64px">What Past Members Are Saying:</p>
+    <div class="quotes">
+      <figure class="q">
+        <div class="q-top"><img src="images/leah.jpg" alt=""><div><b>Leah M.</b><span>Postpartum Fitness Coach</span></div></div>
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>"Posted the Signal Post on day 1. Got 31 replies. <mark>Sold 7 seats at $1,500 by Friday.</mark>"</blockquote>
+      </figure>
+      <figure class="q">
+        <div class="q-top"><img src="images/omar.jpg" alt=""><div><b>Omar K.</b><span>Career Coach For Engineers</span></div></div>
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>"I had 900 followers. <mark>I made $12,400 from my first cohort.</mark> I still don't have a funnel."</blockquote>
+      </figure>
+      <figure class="q">
+        <div class="q-top"><img src="images/tasha.jpg" alt=""><div><b>Tasha R.</b><span>Piano Teacher</span></div></div>
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <blockquote>"I was 6 weeks into building a course nobody asked for. Stopped, ran the 3 posts, <mark>sold 9 seats.</mark>"</blockquote>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EVERYTHING YOU GET ===================== -->
+<section class="band band-get"><h2 class="h-band">Everything You Get</h2><p class="h-band-sub">When You Join Free Today</p></section>
+<section class="sec">
+  <div class="bundle" aria-hidden="true">
+    <div class="b-floor"></div>
+    <div class="b-tab"><div class="tab-dev"><div class="wbk">
+      <span class="mini"><svg viewBox="0 0 24 24"><path d="M12 1.8l3 6.4 7 .8-5.2 4.8 1.4 6.9L12 17.2l-6.2 3.5 1.4-6.9L2 9l7-.8z" fill="#e3193f"/></svg>Pre-Sold Cohort</span>
+      <span class="t1">The Pre-Sold Cohort</span>
+      <span class="t2">Post<br>Templates</span>
+      <span class="t3">fill in the blanks</span>
+      <div class="pages">
+        <div><span class="sk"></span><span class="bl"></span><span class="sk b"></span><span class="bl"></span><span class="sk c"></span></div>
+        <div><span class="sk c"></span><span class="bl"></span><span class="sk"></span><span class="bl"></span><span class="sk b"></span></div>
+        <div><span class="sk b"></span><span class="bl"></span><span class="sk c"></span><span class="bl"></span><span class="sk"></span></div>
+      </div>
+    </div></div></div>
+
+    <div class="lap">
+      <div class="lap-scr"><div class="lap-in">
+        <figure class="vid"><img src="images/host.jpg" alt=""><span class="rec"><i></i>LIVE</span><figcaption>Daniel Reyes</figcaption></figure>
+        <div class="slide"><small>DAY 1</small><b>Find The Offer People Already Want</b><span class="sk" style="width:70%"></span><span class="sk b" style="width:50%"></span>
+          <div class="pg"><span class="sk"></span><i></i><span class="sk b"></span><i></i><span class="sk c"></span></div></div>
+        <div class="chat">
+          <div><img src="images/p1.jpg" alt=""><span><span class="sk"></span><span class="sk b" style="width:60%"></span></span></div>
+          <div><img src="images/p6.jpg" alt=""><span><span class="sk c"></span></span></div>
+          <div><img src="images/p3.jpg" alt=""><span><span class="sk b"></span><span class="sk" style="width:44%"></span></span></div>
+          <div><img src="images/p8.jpg" alt=""><span><span class="sk"></span></span></div>
+          <div><img src="images/p2.jpg" alt=""><span><span class="sk c"></span><span class="sk b" style="width:70%"></span></span></div>
+          <div><img src="images/p7.jpg" alt=""><span><span class="sk b"></span></span></div>
+        </div>
+        <div class="ppl"><img src="images/p4.jpg" alt=""><img src="images/leah.jpg" alt=""><img src="images/p5.jpg" alt=""><img src="images/omar.jpg" alt=""><img src="images/tasha.jpg" alt=""><img src="images/p3.jpg" alt=""><img src="images/p8.jpg" alt=""></div>
+      </div></div>
+      <div class="lap-base"></div>
+    </div>
+
+    <div class="b-cal"><div class="cal">
+      <div class="cal-h">3 live sessions</div>
+      <div class="cal-r">Day 1<span>1 hour</span><i></i></div>
+      <div class="cal-r">Day 2<span>1 hour</span><i></i></div>
+      <div class="cal-r">Day 3<span>1 hour</span><i></i></div>
+    </div></div>
+
+    <div class="b-phone"><div class="phone"><div class="scr">
+      <span class="lab">The 2-Line DM Close Script</span>
+      <div class="dm">
+        <div class="bub in hist"><span class="sk"></span><span class="sk c" style="width:60%"></span></div>
+        <div class="bub in">how much?</div>
+        <div class="bub out"><span class="sk"></span><span class="sk b" style="width:70%"></span></div>
+        <div class="paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Paid seat</div>
+      </div>
+    </div></div></div>
+
+    <div class="b-calc"><div class="calc">
+      <small>Offer Pricing Calculator</small>
+      <div class="lcd">$2,000</div>
+      <div class="keys"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div></div>
+
+    <div class="b-comm"><div class="win">
+      <div class="win-bar"><i></i><i></i><i></i><b>Private challenge community</b></div>
+      <div class="win-body">
+        <span class="qa"><i></i>Daily Q&amp;A</span>
+        <div class="msg"><img src="images/host.jpg" alt="" style="object-position:50% 15%"><div><span class="sk"></span><span class="sk b" style="width:66%"></span></div></div>
+        <div class="msg"><img src="images/leah.jpg" alt=""><div><span class="sk c"></span></div></div>
+        <div class="msg"><img src="images/p2.jpg" alt=""><div><span class="sk b"></span><span class="sk" style="width:48%"></span></div></div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="card getcard">
+    <ul class="getlist">
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg></span><span><strong>3 live sessions</strong>, 1 hour each</span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><span><strong>The Pre-Sold Cohort Post Templates</strong> (fill in the blanks)</span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.8A8 8 0 1 1 21 12z"/><path d="M8.5 10.5h7M8.5 13.5h4"/></svg></span><span><strong>The 2-Line DM Close Script</strong></span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8v4H8zM8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span><span><strong>The Offer Pricing Calculator</strong></span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-4 3.4-6 6.5-6s5.7 2 6.5 6M16 4.5a3.5 3.5 0 0 1 0 7M18.5 14.5c1.6.8 2.7 2.6 3 5.5"/></svg></span><span><strong>Private challenge community</strong> with daily Q&amp;A</span></li>
+    </ul>
+
+    <p class="urgent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>The live room is capped at 1,000 people. Replays come down 72 hours after Day 3.</p>
+
+    <div class="cta-box" style="margin-top:30px">
+      <button class="cta js-open" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5h18V10a2 2 0 0 0 0 4v3.5H3V14a2 2 0 0 0 0-4z"/><path d="M14.5 7v10" stroke-dasharray="1.8 2"/></svg>Save My Free Seat</button>
+      <p class="cta-sub">100% free. Starts Monday, Oct 12.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="plate">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.8l3 6.4 7 .8-5.2 4.8 1.4 6.9L12 17.2l-6.2 3.5 1.4-6.9L2 9l7-.8z" fill="#e3193f" stroke="#7d0a1f" stroke-width=".8"/></svg>
+    <span><b>Pre-Sold Cohort</b><small>Free 3-Day Challenge</small></span>
+  </div>
+  <p>© 2026 Daniel Reyes. All rights reserved.</p>
+  <p><a href="#">Privacy Policy</a>·<a href="#">Terms</a></p>
+</footer>
+
+<!-- ===================== OPT-IN POPUP =====================
+     GHL: swap this <form> for the native GHL form/survey embed if you prefer.
+     Fields per brief: first name, email, phone (optional, for SMS reminders). -->
+<div class="modal" id="psc-modal" role="dialog" aria-modal="true" aria-labelledby="psc-m-title">
+  <div class="m-box">
+    <div class="m-head">
+      <button class="m-x js-close" type="button" aria-label="Close">×</button>
+      <h2 id="psc-m-title">Save My Free Seat</h2>
+      <p>Starts Monday, Oct 12 at 12 PM EST. Just 1 hour a day.</p>
+    </div>
+    <div class="m-bar"><i></i></div>
+    <form id="psc-form" novalidate>
+      <div class="fld"><label for="psc-fn">First name</label><input id="psc-fn" name="first_name" autocomplete="given-name" required></div>
+      <div class="fld"><label for="psc-em">Email</label><input id="psc-em" name="email" type="email" autocomplete="email" required></div>
+      <div class="fld"><label for="psc-ph">Phone <span>Optional, for SMS reminders</span></label><input id="psc-ph" name="phone" type="tel" autocomplete="tel"></div>
+      <button class="cta" type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5h18V10a2 2 0 0 0 0 4v3.5H3V14a2 2 0 0 0 0-4z"/><path d="M14.5 7v10" stroke-dasharray="1.8 2"/></svg>Save My Free Seat</button>
+    </form>
+  </div>
+</div>
+
+</div>
+
+<script>
+(function(){
+  /* ============ CONFIG ============ */
+  var CONFIG = {
+    start: '2026-10-12T12:00:00-04:00',   // Monday Oct 12, 12 PM Eastern
+    thankYou: ''                          // thank-you page URL (calendar add + community join)
+  };
+  var HEADLINES = {
+    b: 'How 214 Coaches With Tiny Audiences Sold Out A $2,000 Program In 10 Days <span class="lime">Using 3 Posts And 1 DM Script</span>',
+    c: 'Sell Your Group Program To 10 People <span class="lime">Before You Build It</span>'
+  };
+
+  var root = document.getElementById('psc');
+
+  // A/B headline: ?h=b or ?h=c
+  var v = (new URLSearchParams(location.search).get('h') || '').toLowerCase();
+  if (HEADLINES[v]) document.getElementById('hero-h').innerHTML = HEADLINES[v];
+
+  // countdown
+  var end = new Date(CONFIG.start).getTime();
+  var cds = root.querySelectorAll('[data-countdown]');
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function tick(){
+    var t = Math.max(0, Math.floor((end - Date.now()) / 1000));
+    var u = { d: Math.floor(t / 86400), h: Math.floor(t % 86400 / 3600), m: Math.floor(t % 3600 / 60), s: t % 60 };
+    cds.forEach(function(cd){ for (var k in u) cd.querySelector('[data-u="' + k + '"]').textContent = pad(u[k]); });
+  }
+  tick(); setInterval(tick, 1000);
+
+  // popup
+  var modal = document.getElementById('psc-modal');
+  function open(){ modal.classList.add('open'); setTimeout(function(){ document.getElementById('psc-fn').focus(); }, 50); }
+  function close(){ modal.classList.remove('open'); }
+  root.querySelectorAll('.js-open').forEach(function(b){ b.addEventListener('click', open); });
+  root.querySelectorAll('.js-close').forEach(function(b){ b.addEventListener('click', close); });
+  modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+
+  document.getElementById('psc-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = e.target, ok = true;
+    ['psc-fn', 'psc-em'].forEach(function(id){
+      var el = document.getElementById(id);
+      var bad = !el.value.trim() || (el.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value));
+      el.style.borderColor = bad ? '#e3193f' : '';
+      if (bad) ok = false;
+    });
+    if (!ok) return;
+    if (CONFIG.thankYou) location.href = CONFIG.thankYou;
+    else { f.reset(); close(); }
+  });
+
+  // day rail draws itself as you scroll through the 3 days
+  var days = document.getElementById('days'), rail = days.querySelector('.rail i');
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var raf = 0;
+    function draw(){
+      raf = 0;
+      var r = days.getBoundingClientRect(), vh = innerHeight;
+      var p = (vh * 0.6 - r.top) / r.height;
+      rail.style.setProperty('--p', Math.min(1, Math.max(0, p)).toFixed(3));
+    }
+    addEventListener('scroll', function(){ if (!raf) raf = requestAnimationFrame(draw); }, { passive: true });
+    draw();
+  }
+})();
+</script>
+</body>
+</html>
